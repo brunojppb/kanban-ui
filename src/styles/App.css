@@ -43,6 +43,7 @@ body {
   border-color: #e2e2e2;
   border-radius: 5px;
   min-height: 100px;
+  padding: 10px;
 }
 
 .todolist-wrapper {
@@ -51,4 +52,63 @@ body {
   float: left;
   padding: 5px;
   margin: 5px;
+}
+
+.loading-wrapper {
+  position: relative;
+  min-height: 200px;
+}
+
+.loading-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.add-todo-wrapper {
+  width: 100%;
+}
+
+.add-todo-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e2e2e2;
+}
+
+.todo-wrapper {
+  border-style: solid;
+  border-color: #e2e2e2;
+  border-left-style: solid;
+  border-width: 1px;
+  border-left-width: 5px;
+  border-radius: 2px;
+  min-height: 30px;
+  padding: 5px 5px 10px 5px;
+  margin-top: 10px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.todo-state-todo {
+  border-left-color: #F03434;
+}
+
+.todo-state-doing {
+  border-left-color: #446CB3;
+}
+
+.todo-state-done {
+  border-left-color: #2ECC71;
+}
+
+.change-state-btn {
+  font-weight: bold;
+  font-size: 20px;
+  background-color: transparent;
+  border-radius: 3px;
+
 }
