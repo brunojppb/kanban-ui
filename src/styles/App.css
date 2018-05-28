@@ -26,3 +26,29 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+body {
+  background-color: #f9f9f9;
+}
+
+.container {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.todolist {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e2e2e2;
+  border-radius: 5px;
+  min-height: 100px;
+}
+
+.todolist-wrapper {
+  width: 30%;
+  height: auto;
+  float: left;
+  padding: 5px;
+  margin: 5px;
+}
