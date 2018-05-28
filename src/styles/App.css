@@ -105,10 +105,12 @@ body {
   border-left-color: #2ECC71;
 }
 
-.change-state-btn {
-  font-weight: bold;
-  font-size: 20px;
+.delete-btn {
+  font-weight: lighter;
   background-color: transparent;
+  background-color: #F64747;
+  color: white;
+  min-height: 25px;
+  border-color: white;
   border-radius: 3px;
-
 }

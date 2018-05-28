@@ -8,8 +8,9 @@ export default class Todolist extends Component {
 
   render() {
 
-    const { todos, filterTodoState } = this.props;
+    const { todos, filterTodoState, callbacks } = this.props;
     const { STATE_TODO, STATE_DOING, STATE_DONE } = Constants.todoState;
+    const { createTodo } = callbacks;
 
     let title = '';
     switch(filterTodoState) {
@@ -22,6 +23,8 @@ export default class Todolist extends Component {
       case STATE_DONE:
         title = 'Done';
         break;
+      default:
+        console.error("Invalid state. It should never happen.");
     }
 
     return (
@@ -30,7 +33,7 @@ export default class Todolist extends Component {
           <h2>{title}</h2>
         </div>
         <div className="todolist">
-          <AddTodo />
+          <AddTodo createTodo={(content) => createTodo(content, filterTodoState)} />
           { todos.map(todo => <Todo key={todo.id} todo={todo} />) }
         </div>
       </div>
