@@ -44,15 +44,10 @@ export default class TodoContainer extends Component {
     this.setState({...this.state, todos: updatedTodos});
   }
 
-  deleteTodo = (id) => {
+  onDeleteTodo = (id) => {
     const {todos} = this.state;
-    Http.delete(`/todos/${id}`)
-    .then(response => {
-      const updatedTodos = todos.filter(t => t.id === id);
-      this.setState({...this.state, todos: updatedTodos});
-    }, error => {
-      console.error('Could not delete todo', error.response);
-    });
+    const updatedTodos = todos.filter(t => t.id !== id);
+    this.setState({...this.state, todos: updatedTodos});
   }
 
   updateTodo = (id, updatedTodo) => {
@@ -75,6 +70,11 @@ export default class TodoContainer extends Component {
     const todos_doing = todos.filter(t => t.state === STATE_DOING);
     const todos_done = todos.filter(t => t.state === STATE_DONE);
 
+    const callbacks = {
+      onCreateTodo: this.onCreateTodo,
+      onDeleteTodo: this.onDeleteTodo
+    }
+
     if(isLoading) {
       return(
         <div className="loading-wrapper">
@@ -92,9 +92,9 @@ export default class TodoContainer extends Component {
           <AddTodo isSaving={isSaving} onCreateTodo={this.onCreateTodo}/>
         </div>
         <div className="row">
-          <Todolist todos={todos_todo} filterTodoState={STATE_TODO} updateTodo={this.updateTodo} />
-          <Todolist todos={todos_doing} filterTodoState={STATE_DOING} updateTodo={this.updateTodo} />
-          <Todolist todos={todos_done} filterTodoState={STATE_DONE} updateTodo={this.updateTodo} />
+          <Todolist todos={todos_todo} filterTodoState={STATE_TODO} callbacks={callbacks} />
+          <Todolist todos={todos_doing} filterTodoState={STATE_DOING} callbacks={callbacks} />
+          <Todolist todos={todos_done} filterTodoState={STATE_DONE} callbacks={callbacks} />
         </div>
       </div>
       

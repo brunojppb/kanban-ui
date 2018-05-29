@@ -44,7 +44,7 @@ export default class AddTodo extends Component {
         <input type="text" 
                 className="add-todo-input" 
                 placeholder="Add a new task" 
-                disabled={isSaving ? 'disabled' : null}
+                disabled={isSaving}
                 ref={el => this.textInput = el}
                 onKeyPress={this.onKeyPress} />
       </div>

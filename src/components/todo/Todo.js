@@ -1,11 +1,42 @@
 import React, { Component } from 'react';
 import Constants from '../../util/Constants';
+import Http from '../../util/Http';
 
 export default class Todo extends Component {
 
-  render() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isEditing: false,
+      isDeleting: false
+    }
+  }
+
+  deleteTodo = () => {
     const { todo } = this.props;
-    const { content, state } = todo;
+    this.setState({...this.state, isDeleting: true});
+    const { onDeleteTodo } = this.props.callbacks;
+    Http.delete(`/todos/${todo.id}`)
+    .then(response => {
+      onDeleteTodo(todo.id);
+    }, error => {
+      this.setState({...this.state, isDeleting: false});
+      console.error('Could not delete todo', error.response);
+    });
+  }
+
+  onChangeTodoState = (e) => {
+    const value = parseInt(e.target.value, 10);
+    if (value === Constants.todoState.STATE_UPDATE_PROGRESS) {
+      return;
+    }
+    console.log("Update state");
+  };
+
+  render() {
+    const { content, state } = this.props.todo;
+    const { isDeleting, isEditing } = this.state;
+    
     const { STATE_TODO, STATE_DOING, STATE_DONE } = Constants.todoState;
     const STATE_UPDATE_PROGRESS = 0;
 
@@ -27,22 +58,14 @@ export default class Todo extends Component {
         console.error("invalid todo state. It should never happen.");
     }
 
-    const onChangeTodoState = (e) => {
-      const value = parseInt(e.target.value, 10);
-      if (value === STATE_UPDATE_PROGRESS) {
-        return;
-      }
-      console.log("Update state");
-    };
-
     return (
       <div className={`${cssClass} todo-wrapper`}>
         <div>
           <p>{content}</p>
         </div>
         <div style={{overflow: 'auto'}}>
-          <button style={{float: 'left'}} className="delete-btn">Delete</button>
-          <select style={{float: 'right'}} onChange={onChangeTodoState}>
+          <button style={{float: 'left'}} className="delete-btn" onClick={this.deleteTodo} disabled={isDeleting}>Delete</button>
+          <select style={{float: 'right'}} onChange={this.onChangeTodoState}>
             { selectOptions.map(opt => <option key={opt.state} value={opt.state}>{opt.title}</option>) }
           </select>
         </div>

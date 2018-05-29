@@ -32,7 +32,7 @@ export default class Todolist extends Component {
             <h2>{title}</h2>
           </div>
           <div className="todolist">
-            {todos.map(todo => <Todo key={todo.id} todo={todo} />)}
+            {todos.map(todo => <Todo key={todo.id} todo={todo} callbacks={callbacks} />)}
           </div>
         </div>
       </div>
