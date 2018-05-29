@@ -20,8 +20,9 @@ The API is ready and available here: https://kanban-api-rails.herokuapp.com/todo
 
 ### Endpoints:
 
-- GET `/todos` - List all tasks in the database
-response: 
+- GET `/todos` - List all tasks in the database.
+
+Response: 
 ```json
 [
   {
@@ -41,7 +42,8 @@ response:
 ]
 ```
 
-- POST `/todos` - Create new task
+- POST `/todos` - Create new task.
+
 Request:
 ```js
 {
@@ -51,6 +53,7 @@ Request:
   }
 }
 ```
+
 Response:
 ```js
 {
@@ -62,7 +65,8 @@ Response:
 }
 ```
 
-- PUT `/todos/{id}` - Update existing task
+- PUT `/todos/{id}` - Update existing task.
+
 Request:
 ```js
 {
@@ -72,6 +76,7 @@ Request:
   }
 }
 ```
+
 Response:
 ```js
 {
@@ -84,4 +89,5 @@ Response:
 ```
 
 - DELETE `/todos/{id}` - Delete existing task
-Response: Empty response
+
+Response: `Empty response`
