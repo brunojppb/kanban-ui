@@ -1,32 +1,52 @@
 import React, { Component } from 'react';
+import Http from '../../util/Http';
 
 export default class AddTodo extends Component {
 
-  render() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isSaving: false
+    };
+  }
 
-    const { createTodo, isSaving } = this.props;
+  createTodo = (content) => {
+    const {onCreateTodo} = this.props;
+    this.setState({...this.state, isSaving: true});
+    const todo = { content, state: 1 };
+    Http.post('/todos', { todo })
+    .then(response => {
+      console.log("Todo saved.");
+      this.textInput.value = '';
+      onCreateTodo(response.data);
+      this.setState({...this.state, isSaving: false});
+    }, error => {
+      this.setState({...this.state, isSaving: false});
+      console.error("Could not save todo", error.response);
+    });
+  }
 
-    const onKeyPress = (e) => {
-      switch(e.key) {
-        case 'Enter':
-          console.log("Enter key", e.target.value);
-          createTodo(e.target.value);
-          this.textInput.value = '';
-          break;
-        default:
-          console.log("Not enter", e.key);
-          break;
-      }
+  onKeyPress = (e) => {
+    switch(e.key) {
+      case 'Enter':
+        this.createTodo(e.target.value);
+        break;
+      default:
+        console.log("Not enter", e.key);
+        break;
     }
+  }
 
+  render() {
+    const { isSaving } = this.state;
     return(
       <div className="add-todo-wrapper">
         <input type="text" 
                 className="add-todo-input" 
-                placeholder="enter your todo here" 
+                placeholder="Add a new task" 
                 disabled={isSaving ? 'disabled' : null}
                 ref={el => this.textInput = el}
-                onKeyPress={onKeyPress} />
+                onKeyPress={this.onKeyPress} />
       </div>
     );
   }

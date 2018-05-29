@@ -99,6 +99,9 @@ a:hover {
   border-width: 1px;
   border-color: #e2e2e2;
 }
+.add-todo-input:disabled {
+  background: #dddddd;
+}
 
 .todo-wrapper {
   border-style: solid;

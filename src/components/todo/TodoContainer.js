@@ -10,7 +10,6 @@ export default class TodoContainer extends Component {
     super(props);
     this.state = {
       isLoading: false,
-      isSaving: false,
       todos: []
     }
   }
@@ -26,20 +25,6 @@ export default class TodoContainer extends Component {
     });
   }
 
-  createTodo = (content) => {
-    this.setState({...this.state, isSaving: true});
-    const todo = { content, state: 1 };
-    Http.post('/todos', { todo })
-    .then(response => {
-      console.log("Todo saved.");
-      let updatedTodos = [...this.state.todos, todo];
-      this.setState({...this.state, isSaving: false, todos: updatedTodos});
-    }, error => {
-      this.setState({...this.state, isSaving: false});
-      console.error("Could not save todo", error.response);
-    });
-  }
-
   updateTodo = (id, content, state) => {
     const { todos } = this.state;
     const todo = todos.find(t => t.id === id);
@@ -52,6 +37,11 @@ export default class TodoContainer extends Component {
     }, error => {
       console.log("Could not update todo", error.response);
     });
+  }
+
+  onCreateTodo = (newTodo) => {
+    const updatedTodos = [newTodo, ...this.state.todos];
+    this.setState({...this.state, todos: updatedTodos});
   }
 
   deleteTodo = (id) => {
@@ -99,7 +89,7 @@ export default class TodoContainer extends Component {
       <div className="container">
         <div className="header-wrapper text-center">
           <h1>Kanban Board</h1>
-          <AddTodo isSaving={isSaving} createTodo={this.createTodo}/>
+          <AddTodo isSaving={isSaving} onCreateTodo={this.onCreateTodo}/>
         </div>
         <div className="row">
           <Todolist todos={todos_todo} filterTodoState={STATE_TODO} updateTodo={this.updateTodo} />
