@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const Http = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: 'https://kanban-api-rails.herokuapp.com',
   headers: { 'Access-Control-Allow-Origin': '*' }
 });
 
