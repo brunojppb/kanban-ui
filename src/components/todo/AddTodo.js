@@ -4,7 +4,7 @@ export default class AddTodo extends Component {
 
   render() {
 
-    const { createTodo } = this.props;
+    const { createTodo, isSaving } = this.props;
 
     const onKeyPress = (e) => {
       switch(e.key) {
@@ -24,6 +24,7 @@ export default class AddTodo extends Component {
         <input type="text" 
                 className="add-todo-input" 
                 placeholder="enter your todo here" 
+                disabled={isSaving ? 'disabled' : null}
                 ref={el => this.textInput = el}
                 onKeyPress={onKeyPress} />
       </div>

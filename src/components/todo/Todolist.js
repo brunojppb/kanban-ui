@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Todo from './Todo';
-import AddTodo from './AddTodo';
 import Constants from '../../util/Constants';
 
 
@@ -10,10 +9,9 @@ export default class Todolist extends Component {
 
     const { todos, filterTodoState, callbacks } = this.props;
     const { STATE_TODO, STATE_DOING, STATE_DONE } = Constants.todoState;
-    const { createTodo } = callbacks;
 
     let title = '';
-    switch(filterTodoState) {
+    switch (filterTodoState) {
       case STATE_TODO:
         title = 'Todo';
         break;
@@ -28,17 +26,18 @@ export default class Todolist extends Component {
     }
 
     return (
-      <div className="todolist-wrapper">
-        <div className="header-wrapper">
-          <h2>{title}</h2>
-        </div>
-        <div className="todolist">
-          <AddTodo createTodo={(content) => createTodo(content, filterTodoState)} />
-          { todos.map(todo => <Todo key={todo.id} todo={todo} />) }
+      <div className="col-1-3">
+        <div className="todolist-wrapper">
+          <div className="header-wrapper">
+            <h2>{title}</h2>
+          </div>
+          <div className="todolist">
+            {todos.map(todo => <Todo key={todo.id} todo={todo} />)}
+          </div>
         </div>
       </div>
     );
 
   }
-  
+
 }
