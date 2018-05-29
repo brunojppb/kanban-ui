@@ -31,9 +31,7 @@ export default class AddTodo extends Component {
       case 'Enter':
         this.createTodo(e.target.value);
         break;
-      default:
-        console.log("Not enter", e.key);
-        break;
+      default: break;
     }
   }
 

@@ -103,6 +103,17 @@ a:hover {
   background: #dddddd;
 }
 
+.edit-todo-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 10px;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e2e2e2;
+}
+
 .todo-wrapper {
   border-style: solid;
   border-color: #e2e2e2;
@@ -128,12 +139,28 @@ a:hover {
   border-left-color: #2ECC71;
 }
 
-.delete-btn {
+[class$="-btn"] {
   font-weight: lighter;
-  background-color: transparent;
-  background-color: #F64747;
   color: white;
   min-height: 25px;
   border-color: white;
   border-radius: 3px;
+}
+
+.delete-btn {
+  background-color: #F64747;
+}
+
+.delete-btn:disabled {
+  font-weight: lighter;
+  background-color: transparent;
+  background-color: #E08283;
+  color: gainsboro;
+  min-height: 25px;
+  border-color: white;
+  border-radius: 3px;
+}
+
+.cancel-btn {
+  background-color: #19B5FE;
 }

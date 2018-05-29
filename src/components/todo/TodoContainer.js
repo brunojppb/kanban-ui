@@ -31,7 +31,6 @@ export default class TodoContainer extends Component {
     const updatedTodo = {...todo, content, state};
     Http.put(`/todos/${id}`, { todo: updatedTodo })
     .then(response => {
-      const index = todos.findIndex(t => t.id === id);
       const updatedTodos = todos.map(t => t.id === id ? {...updatedTodo} : t);
       this.setState({...this.state, todos: updatedTodos});
     }, error => {
@@ -50,15 +49,10 @@ export default class TodoContainer extends Component {
     this.setState({...this.state, todos: updatedTodos});
   }
 
-  updateTodo = (id, updatedTodo) => {
+  onUpdateTodo = (updatedTodo) => {
     const {todos} = this.state;
-    Http.put(`/todos/${id}`, { todo: updatedTodo })
-    .then(response => {
-      const updatedTodos = todos.map(t => t.id === id ? {...updatedTodo} : t);
-      this.setState({...this.state, todos: updatedTodos});
-    }, error => {
-      console.error('Could not update todo', error.response);
-    });
+    const updatedTodos = todos.map(t => t.id === updatedTodo.id ? {...updatedTodo} : t);
+    this.setState({...this.state, todos: updatedTodos});
   }
 
   render() {
@@ -72,7 +66,8 @@ export default class TodoContainer extends Component {
 
     const callbacks = {
       onCreateTodo: this.onCreateTodo,
-      onDeleteTodo: this.onDeleteTodo
+      onDeleteTodo: this.onDeleteTodo,
+      onUpdateTodo: this.onUpdateTodo
     }
 
     if(isLoading) {
