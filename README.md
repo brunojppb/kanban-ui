@@ -13,6 +13,9 @@ Requirements:
 - It should be possible to delete current tasks
 - It should be possible to edit current tasks
 - It should be possible to move tasks between lists
+- It should not include any CSS framework
+
+You can check a live version [HERE](https://www.bpaulino.com.br/kanban-ui)
 
 ## Backend API
 
@@ -22,7 +25,7 @@ The API is ready and available here: https://kanban-api-rails.herokuapp.com/todo
 
 - GET `/todos` - List all tasks in the database.
 
-Response: 
+Response:
 ```json
 [
   {
