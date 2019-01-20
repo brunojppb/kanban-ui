@@ -15,7 +15,7 @@ Requirements:
 - It should be possible to move tasks between lists
 - It should not include any CSS framework
 
-You can check a live version [HERE](https://www.bpaulino.com.br/kanban-ui)
+You can check a live version [HERE](https://www.bpaulino.com/kanban-ui)
 
 ## Backend API
 
