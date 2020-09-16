@@ -21,7 +21,7 @@ You can check a live version of this Kanban board [HERE](https://bpaulino.com/ka
 ## Backend API
 
 The API is ready and available here: https://kanban-api-rails.herokuapp.com/todos  
-The API responds with JSON for all endpoints.
+The API responds with [JSON](https://www.json.org/json-en.html) for all endpoints.
 
 ### Endpoints:
 
