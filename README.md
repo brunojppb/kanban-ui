@@ -14,7 +14,7 @@ Requirements:
 - It should be possible to edit current tasks
 - It should be possible to move tasks between lists
 - It should not include any CSS framework
-- The layout should be responsible to some degree, at least for mobile devices
+- The layout should be responsive to some degree, at least for mobile devices
 
 You can check a live version of this Kanban board [HERE](https://bpaulino.com/kanban-ui). You can also take a look at the code, but if you copy, we will know 🙂
 
