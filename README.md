@@ -6,16 +6,17 @@ A kanban board created with React.js.
 
 Requirements:
 
-- It should be built with plain React.js
-- You can any http request library for API communication
-- It should have a kanban board with 3 lists: Todo, Doing and Done
+- It should preferably be built with plain React.js, but you can use any JS framework, or none at all, Vanilla JS is just fine
+- You can use any http request library for API communication
+- It should have a kanban board with 3 lists: **Todo**, **Doing** and **Done**
 - It should be possible to insert new tasks
 - It should be possible to delete current tasks
 - It should be possible to edit current tasks
 - It should be possible to move tasks between lists
 - It should not include any CSS framework
+- The layout should be responsible to some degree, at least for mobile devices
 
-You can check a live version [HERE](https://bpaulino.com/kanban-ui)
+You can check a live version of this Kanban board [HERE](https://bpaulino.com/kanban-ui). You can also take a look at the code, but if you copy, we will know 🙂
 
 ## Backend API
 
@@ -45,7 +46,7 @@ Response:
 ]
 ```
 
-- POST `/todos` - Create new task.
+- POST `/todos` - Create a new task.
 
 Request:
 ```js
@@ -68,7 +69,7 @@ Response:
 }
 ```
 
-- PUT `/todos/{id}` - Update existing task.
+- PUT `/todos/{id}` - Update an existing task.
 
 Request:
 ```js
